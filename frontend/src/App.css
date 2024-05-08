@@ -157,38 +157,76 @@
   color: black;
   padding: 10px;
 }
-
-.login,.signup {
+.image-panel{
+  margin-bottom:20px;
+}
+.loginImg, .signupImg{
+  border-radius: 1200px; 
+}
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
-  width: 38vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 300px;
-  margin: auto;
-  background-color: black;
-  color: black;
-  border-radius: 100px;
+  height: 100vh; /* Set the height of the container to the full viewport height */
 }
-.login-form {
-  background-color: black;
-  color: white;
-  height: 90vh;
-  padding: 30px;
-  margin-top: 100px;
-  border-radius: 100px;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+
+.login, .signup {
+  width: 60vh; /* Set the width of the forms */
+  padding: 20px; /* Add padding for better spacing */
+  margin: auto; /* Center the forms horizontally */
+  border-radius: 20px; /* Add border radius for rounded corners */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
+
+
+
+.login-form,.signup-form {
+  background-image: url("../../public/form-bg.jpg"); /* Set the background image */
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); 
+  padding: 40px; 
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: -6%;
+}
+
+/* Style the select element */
+.select-wrapper select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  appearance: none; /* Remove default dropdown arrow */
+}
+
+/* Style the select arrow */
+.select-wrapper::after {
+  content: '\25BC'; /* Unicode character for down arrow */
+  position: absolute;
+  top: 38%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 
 .input-group {
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #070707;
 }
 .input-label {
   margin-bottom: 20px;
   color: #070707;
+  height: 42px;
 }
 button {
   background-color: #4CAF50;
