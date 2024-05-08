@@ -8,7 +8,7 @@ const Signup = () => {
   const [contact, setContact] = useState('');
   const [address, setAddress] = useState('');
   const { signup, error, isLoading } = useSignup();
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +21,10 @@ const Signup = () => {
       <form onSubmit={handleSubmit}>
         <div className="login-form">
           <div className="neon-container">
-            <h3 className="neon_log" data-text="U">GALAXYPORT</h3>
+            <h3 className="neon_log" data-text="U">COURSECRAFT</h3>
           </div>
-          <div className="">
-            <img src="" className="" alt="" />
+          <div className="image-panel">
+            <img src="../signup.jpg" className="signupImg" alt="" />
           </div>
           <div className="input-group">
             <label>Email address:</label>
@@ -44,10 +44,16 @@ const Signup = () => {
           </div>
           <div className="input-group">
             <label>Role:</label>
-            <select onChange={(e) => setRole(e.target.value)} value={role}>
-              <option value="student">Student</option>
-              <option value="instructor">Instructor</option>
-            </select>
+            <div className="select-wrapper">
+              <select
+                className="input-label"
+                onChange={(e) => setRole(e.target.value)}
+                value={role}
+              >
+                <option value="student">Student</option>
+                <option value="instructor">Instructor</option>
+              </select>
+            </div>
           </div>
 
           <div className="input-group">
