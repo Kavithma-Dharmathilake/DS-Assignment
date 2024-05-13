@@ -17,14 +17,14 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup">
+    <div className="signup" style={{marginTop:"10rem"}}>
       <form onSubmit={handleSubmit}>
         <div className="login-form">
           <div className="neon-container">
-            <h3 className="neon_log" data-text="U">COURSECRAFT</h3>
+            <h3 className="neon_log" data-text="U">Signup</h3>
           </div>
           <div className="image-panel">
-            <img src="../signup.jpg" className="signupImg" alt="" />
+            <img src="../signup.jpg"   className="signupImg" alt="" />
           </div>
           <div className="input-group">
             <label>Email address:</label>
@@ -56,7 +56,7 @@ const Signup = () => {
             </div>
           </div>
 
-          <div className="input-group">
+          <div className="input-group" style={{marginTop:"50px"}}>
             <label>Contact Number:</label>
             <input className="input-label"
               type="contactNumber"
@@ -72,7 +72,8 @@ const Signup = () => {
               value={address}
             />
           </div>
-          <button disabled={isLoading}>SIGN UP</button>
+          <button disabled={isLoading}
+            style={{marginLeft:"0.5rem"}}>SIGN UP</button>
           {error && <div className="error">{error}</div>}
         </div>
       </form>

@@ -159,9 +159,12 @@
 }
 .image-panel{
   margin-bottom:20px;
+  margin-left: 90px;
 }
 .loginImg, .signupImg{
-  border-radius: 1200px; 
+  border-radius: 1200px;
+  width: 400px;
+  margin-left:-45px;
 }
 .login-container {
   display: flex;
@@ -173,23 +176,61 @@
 .login, .signup {
   width: 60vh; /* Set the width of the forms */
   padding: 20px; /* Add padding for better spacing */
+  /*background-image: url("../../public/form-bg.jpg");*/
   margin: auto; /* Center the forms horizontally */
   border-radius: 20px; /* Add border radius for rounded corners */
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  background-size: cover;
+  background: linear-gradient(to bottom right, #14bdee, #e4ebef);
+}
+
+.search-bar-container {
+  margin-top: 10rem;
+}
+
+.search-input {
+  border: 1px solid #151212;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  width: 50%;
+  margin-left: 20%;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.search-button {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  margin-right: 560px;
+  transform: translateY(-50%);
+  background-color: #14bdee;
+  color: #131212;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
 }
 
 
 
-.login-form,.signup-form {
-  background-image: url("../../public/form-bg.jpg"); /* Set the background image */
-  background-size: cover; /* Ensure the background image covers the entire container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent the background image from repeating */
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); 
-  padding: 40px; 
-}
+/*.login-form,.signup-form {*/
+/*  background-size: cover; !* Ensure the background image covers the entire container *!*/
+/*  background-position: center; !* Center the background image *!*/
+/*  background-repeat: no-repeat; !* Prevent the background image from repeating *!*/
+/*  padding-top: 30px;*/
+/*  border-radius: 40px;*/
+/*  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);*/
+/*}*/
 
 .select-wrapper {
   position: relative;
@@ -227,13 +268,14 @@
   margin-bottom: 20px;
   color: #070707;
   height: 42px;
+  width: 600px;
 }
 button {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #ffffff;
+  border: 2px solid #0a0c0c;
+  color: #070707;
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
 }
 
@@ -247,10 +289,38 @@ button:disabled {
   margin-right: 110px;
 }
 
+.error {
+  color: red; /* Set text color to red */
+  font-size: 16px; /* Set font size */
+  margin-top: 5px; /* Add some space at the top */
+  background-color: #ffe6e6; /* Add background color */
+  padding: 10px; /* Add padding for better readability */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  border: 1px solid #ffcccc; /* Add border */
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Add box shadow for emphasis */
+}
+
+
+.btn-form{
+  background-color: #47f54e; /* Green background */
+  border: 2px solid #0a0c0c;
+  color: black; /* White text */
+  padding: 15px 32px; /* Padding */
+  text-align: center; /* Center text */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin */
+  cursor: pointer; /* Pointer cursor */
+  border-radius: 12px; /* Rounded corners */
+  width: 400px;
+  margin-left: 80px;
+}
+
 .btn-sign{
   margin-left: 100px;
   margin-right: 100px;
 }
+
+
 
 .neon-container{
 padding-top: 30px;
