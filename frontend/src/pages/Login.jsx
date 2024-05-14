@@ -13,11 +13,11 @@ const Login = () => {
     }
 
     return (
-        <div className="login"> {/* Setting the background image */}
+        <div className="login" style={{marginTop:"10rem"}}> {/* Setting the background image */}
             <form onSubmit={handleSubmit}>
-                <div className="login-form" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <div className="login-form">
                     <div className="neon-container">
-                        <h3 className="neon_log" data-text="U">COURSECRAFT</h3>
+                        <h3 className="neon_log" data-text="U">Login</h3>
                     </div>
                     <div className="image-panel">
                         <img src="../login.jpg" className="loginImg" alt="" />
@@ -40,8 +40,15 @@ const Login = () => {
                             value={password}
                         />
                     </div>
-                    <button disabled={isLoading}>LOG IN</button>
+                    <button
+                        disabled={isLoading}
+                        className = "btn-form"
+                        style={{marginLeft:"0.5rem"}}
+                    >
+                        LOG IN
+                    </button>
                     {error && <div className="error">{error}</div>}
+
                 </div>
             </form>
         </div>

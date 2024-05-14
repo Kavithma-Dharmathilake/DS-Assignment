@@ -21,10 +21,10 @@ export const notifyMail = async (subject, message, usermail, userId) => {
 
   // Send the email using EmailJS
   try {
-    // const res = await axios.post(
-    //   "https://api.emailjs.com/api/v1.0/email/send",
-    //   data
-    // );
+    const res = await axios.post(
+      "https://api.emailjs.com/api/v1.0/email/send",
+      data
+    );
     console.log(res.data);
   } catch (error) {
     console.error(error);
@@ -35,9 +35,9 @@ export const notifySMS = async (message, contact) => {
   const id = "27106";
   const APIKEY = "M9k2hmAWrvviuk1bN0BH";
   try {
-    // const response = await axios.post(
-    //   `https://app.notify.lk/api/v1/send?user_id=${id}&api_key=${APIKEY}&sender_id=NotifyDEMO&to=${contact}&message=${message}`
-    // );
+    const response = await axios.post(
+      `https://app.notify.lk/api/v1/send?user_id=${id}&api_key=${APIKEY}&sender_id=NotifyDEMO&to=${contact}&message=${message}`
+    );
     console.log(response);
   } catch (error) {
     console.error("Error in notifySMS: ", error);

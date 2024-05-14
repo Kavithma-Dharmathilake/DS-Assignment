@@ -30,4 +30,4 @@ Before running the project, ensure that you have Node.js and npm installed on yo
 1. Open a terminal in VS Code and navigate to the `Project` directory.
 2. Ensure that Docker Desktop is running.
 3. Run `kubectl apply -f rbns.yaml`.
-4. Wait for some time until all components have started, then open your browser and navigate to `http://localhost:3000`.
+4. Wait for some time until all components have started, then open your browser and navigate to `http://localhost:5173`.
