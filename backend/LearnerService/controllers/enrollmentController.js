@@ -138,8 +138,8 @@ const cancelEnrollment = async (req, res) => {
 
     const mail = [];
 
-    const subject = "Course Unenrollment"; // email subject for erolling into a course
-    const message = `${userId}, you are successfully unenrolled from ${courseDetails.name} course.`;
+    const subject = "Course Unenrollment"; // email subject for unerolling into a course
+    const message = `${userId}, you are successfully unenrolled from ${courseDetails.name} course.`; // email body for unerolling into a course
 
     mail.push(subject, message, userId);
 
