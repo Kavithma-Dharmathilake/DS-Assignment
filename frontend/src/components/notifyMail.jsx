@@ -6,7 +6,6 @@ export const notifyMail = async (subject, message, usermail, userId) => {
   const templateId = "template_djo8kxa";
   const publicKey = "4tiGQohDsjDdVDgQV";
 
-  // Create an object with EmailJS service ID, template ID, Public Key, and Template params
   const data = {
     service_id: serviceId,
     template_id: templateId,
