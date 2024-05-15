@@ -122,6 +122,8 @@ export const getProgress = async (userId, courseId, count, outOf) => {
         body: JSON.stringify({ count: count, outOf: outOf }), // Corrected 'outOf'
       }
     );
+
+    //assing the response object to a variable
     const data = await response.json();
     return data;
   } catch (error) {
