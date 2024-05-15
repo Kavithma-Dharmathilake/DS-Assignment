@@ -16,7 +16,7 @@ const enrollCourse = async (req, res) => {
 
     console.log(`Course: ${courseDetails}, enrollKey: ${enrollKey}`);
 
-    //check if user already enroll into this course
+    //if course not exsistent in the database then show the error message
     if (!courseDetails) {
       return res.status(404).json({ message: "Course not found" });
     }
