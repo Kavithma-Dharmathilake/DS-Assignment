@@ -54,6 +54,8 @@ export const unEnroll = async (userId, email, courseId, contact) => {
 
       //notify by a SMS message
       await notifySMS(data[1], contact);
+
+      //assing the response object to a variable
       console.log("Unenroll: " + data);
     } else {
       console.log("Failed to unenroll. Status: ", response.status);
