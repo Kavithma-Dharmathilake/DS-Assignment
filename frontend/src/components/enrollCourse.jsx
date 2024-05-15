@@ -28,6 +28,7 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
   }
 };
 
+//unenroll from a course
 export const unEnroll = async (userId, email, courseId, contact) => {
   try {
     const response = await fetch(
