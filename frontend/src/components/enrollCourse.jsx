@@ -96,6 +96,8 @@ export const removeCartItem = async (userId, courseId) => {
         },
       }
     );
+
+    //assing the response object to a variable
     const data = await response.json();
     console.log("removeCartItem: " + data.courseName);
   } catch (error) {
