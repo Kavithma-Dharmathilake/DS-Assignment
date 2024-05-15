@@ -17,7 +17,11 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
 
     if (response.ok) {
       const data = await response.json();
+
+      //notify by an email
       await notifyMail(data[0], data[1], email, data[2]);
+
+      //notify by a SMS message
       await notifySMS(data[1], contact);
       console.log("Enroll: " + data);
     } else {
@@ -28,6 +32,7 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
   }
 };
 
+//unenroll from a course
 export const unEnroll = async (userId, email, courseId, contact) => {
   try {
     const response = await fetch(
@@ -42,7 +47,11 @@ export const unEnroll = async (userId, email, courseId, contact) => {
 
     if (response.ok) {
       const data = await response.json();
+
+      //notify by an email
       await notifyMail(data[0], data[1], email, data[2]);
+
+      //notify by a SMS message
       await notifySMS(data[1], contact);
       console.log("Unenroll: " + data);
     } else {
