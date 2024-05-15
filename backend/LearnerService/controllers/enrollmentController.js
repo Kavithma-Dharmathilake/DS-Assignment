@@ -11,6 +11,7 @@ const enrollCourse = async (req, res) => {
     const { userId, courseCode } = req.params;
     const { enrollKey } = req.body;
 
+    //check if the course is exist in the database
     const courseDetails = await Course.findOne({ _id: courseCode });
 
     console.log(`Course: ${courseDetails}, enrollKey: ${enrollKey}`);
