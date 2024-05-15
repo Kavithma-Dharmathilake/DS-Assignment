@@ -53,11 +53,6 @@ const enrollCourse = async (req, res) => {
 
       mail.push(subject, message, userId);
       return res.status(200).json(mail);
-
-      // } else {
-      //   console.log("Invalid enrollKey");
-      //   return res.status(400).json({ message: "Invalid enrollKey" });
-      // }
     }
   } catch (error) {
     return res.status(400).json({ error: error.message });
