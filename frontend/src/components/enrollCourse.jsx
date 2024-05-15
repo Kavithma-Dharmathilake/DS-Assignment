@@ -143,6 +143,8 @@ export const showProgress = async (userId, courseId) => {
         },
       }
     );
+
+    //assing the response object to a variable
     const data = await response.json();
     console.log(`showProgress ${data}`);
     return data;
