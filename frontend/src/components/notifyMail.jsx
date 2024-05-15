@@ -32,8 +32,8 @@ export const notifyMail = async (subject, message, usermail, userId) => {
 };
 
 export const notifySMS = async (message, contact) => {
-  const id = "27106";
-  const APIKEY = "M9k2hmAWrvviuk1bN0BH";
+  const id = "27106"; //Security key for notifyMe.lk
+  const APIKEY = "M9k2hmAWrvviuk1bN0BH"; //API key for notifyMe.lk
   try {
     const response = await axios.post(
       `https://app.notify.lk/api/v1/send?user_id=${id}&api_key=${APIKEY}&sender_id=NotifyDEMO&to=${contact}&message=${message}`
