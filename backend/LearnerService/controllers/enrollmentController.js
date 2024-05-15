@@ -149,6 +149,7 @@ const cancelEnrollment = async (req, res) => {
   }
 };
 
+//add to cart function
 const addToCart = async (req, res) => {
   const { userId, courseId } = req.params;
   console.log(userId, courseId);
