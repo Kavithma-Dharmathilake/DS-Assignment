@@ -62,7 +62,7 @@ const enrollCourse = async (req, res) => {
 const getEnrollments = async (req, res) => {
   try {
     // Assuming Enroll model is imported properly
-    // const myEnrolls = await Enroll.find({});
+    const myEnrolls = await Enroll.find({});
 
     if (myEnrolls.length === 0) {
       return res.status(404).json({ message: "No enrollments found." });
@@ -138,7 +138,7 @@ const cancelEnrollment = async (req, res) => {
 
     const mail = [];
 
-    const subject = "Course Unenrollment";
+    const subject = "Course Unenrollment"; // email subject for erolling into a course
     const message = `${userId}, you are successfully unenrolled from ${courseDetails.name} course.`;
 
     mail.push(subject, message, userId);
