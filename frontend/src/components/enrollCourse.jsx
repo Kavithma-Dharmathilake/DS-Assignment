@@ -21,6 +21,7 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
       //notify by an email
       await notifyMail(data[0], data[1], email, data[2]);
 
+      //notify by a SMS message
       await notifySMS(data[1], contact);
       console.log("Enroll: " + data);
     } else {
