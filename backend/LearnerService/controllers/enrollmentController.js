@@ -62,9 +62,7 @@ const enrollCourse = async (req, res) => {
 const getEnrollments = async (req, res) => {
   try {
     // Assuming Enroll model is imported properly
-    const myEnrolls = await Enroll.find({
-      /* Add filtering criteria if necessary */
-    });
+    // const myEnrolls = await Enroll.find({});
 
     if (myEnrolls.length === 0) {
       return res.status(404).json({ message: "No enrollments found." });
