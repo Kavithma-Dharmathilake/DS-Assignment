@@ -85,6 +85,7 @@ export const addToCart = async (userId, courseId) => {
 };
 
 export const removeCartItem = async (userId, courseId) => {
+  //calling the backend removeCart()
   try {
     const response = await fetch(
       `http://localhost:8084/api/enroll/remove/${userId}/${courseId}`,
