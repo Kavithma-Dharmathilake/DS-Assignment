@@ -112,6 +112,7 @@ export const removeCartItem = async (userId, courseId) => {
 export const getProgress = async (userId, courseId, count, outOf) => {
   console.log(`getProgress--- ${userId}, ${courseId}, ${count},${outOf}`);
   try {
+    //calling the backend method getProgress()
     const response = await fetch(
       `http://localhost:8084/api/enroll/myProgress/${userId}/${courseId}`,
       {
