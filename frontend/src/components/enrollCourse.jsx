@@ -64,6 +64,7 @@ export const unEnroll = async (userId, email, courseId, contact) => {
 
 //add selected courses to the cart
 export const addToCart = async (userId, courseId) => {
+  //callinge the backend addToCart function
   try {
     const response = await fetch(
       `http://localhost:8084/api/enroll/addCart/${userId}/${courseId}`,
