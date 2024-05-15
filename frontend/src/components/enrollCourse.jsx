@@ -62,6 +62,7 @@ export const unEnroll = async (userId, email, courseId, contact) => {
   }
 };
 
+//add selected courses to the cart
 export const addToCart = async (userId, courseId) => {
   try {
     const response = await fetch(
