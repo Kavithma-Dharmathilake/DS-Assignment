@@ -169,6 +169,7 @@ const addToCart = async (req, res) => {
         price: courseDetails.price,
       });
 
+      //return the cartItem object
       return res.status(200).json(cartItem);
     }
   } catch (error) {
@@ -178,6 +179,7 @@ const addToCart = async (req, res) => {
   }
 };
 
+//get mycart records from database
 const myCart = async (req, res) => {
   try {
     const { userId } = req.params;
