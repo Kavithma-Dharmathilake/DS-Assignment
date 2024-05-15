@@ -49,7 +49,7 @@ const enrollCourse = async (req, res) => {
       const mail = [];
 
       const subject = "Course enrollment"; // email subject for erolling into a course
-      const message = `${userId}, you are successfully enrolled into ${courseDetails.name} course.`;
+      const message = `${userId}, you are successfully enrolled into ${courseDetails.name} course.`; // email body for erolling into a course
 
       mail.push(subject, message, userId);
       return res.status(200).json(mail);
