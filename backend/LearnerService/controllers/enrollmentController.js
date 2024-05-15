@@ -8,27 +8,24 @@ const mongoose = require("mongoose");
 //enrolling to a new course
 const enrollCourse = async (req, res) => {
   try {
-   
     const { userId, courseCode } = req.params;
     const { enrollKey } = req.body;
 
-
-    const courseDetails = await Course.findOne({ _id:courseCode });
+    const courseDetails = await Course.findOne({ _id: courseCode });
 
     console.log(`Course: ${courseDetails}, enrollKey: ${enrollKey}`);
 
+    //check if user already enroll into this course
     if (!courseDetails) {
       return res.status(404).json({ message: "Course not found" });
     }
 
     if (true) {
-      
       // Check if the user is already enrolled
       const enrolledCheck = await Enroll.findOne({
         userId: userId,
-        courseId: courseDetails._id
+        courseId: courseDetails._id,
       });
-
 
       if (!_.isEmpty(enrolledCheck)) {
         return res
@@ -36,7 +33,6 @@ const enrollCourse = async (req, res) => {
           .json({ message: "You are already enrolled in this course." });
       }
 
-    
       // Perform enrollment logic here
       const count = 0;
       console.log(courseDetails.name);
@@ -57,10 +53,10 @@ const enrollCourse = async (req, res) => {
       mail.push(subject, message, userId);
       return res.status(200).json(mail);
 
-    // } else {
-    //   console.log("Invalid enrollKey");
-    //   return res.status(400).json({ message: "Invalid enrollKey" });
-    // }
+      // } else {
+      //   console.log("Invalid enrollKey");
+      //   return res.status(400).json({ message: "Invalid enrollKey" });
+      // }
     }
   } catch (error) {
     return res.status(400).json({ error: error.message });
@@ -70,7 +66,9 @@ const enrollCourse = async (req, res) => {
 const getEnrollments = async (req, res) => {
   try {
     // Assuming Enroll model is imported properly
-    const myEnrolls = await Enroll.find({ /* Add filtering criteria if necessary */ });
+    const myEnrolls = await Enroll.find({
+      /* Add filtering criteria if necessary */
+    });
 
     if (myEnrolls.length === 0) {
       return res.status(404).json({ message: "No enrollments found." });
@@ -85,33 +83,32 @@ const getEnrollments = async (req, res) => {
 
 const getStudentsCountPerCourse = async (req, res) => {
   try {
-      const studentCounts = await Enroll.aggregate([
-          {
-              $group: {
-                  _id: '$courseId',
-                  students: { $addToSet: '$userId' } // Collect unique userIds per course
-              }
-          },
-          {
-              $project: {
-                  courseId: '$_id',
-                  studentCount: { $size: '$students' } // Calculate the count of unique userIds per course
-              }
-          }
-      ]);
+    const studentCounts = await Enroll.aggregate([
+      {
+        $group: {
+          _id: "$courseId",
+          students: { $addToSet: "$userId" }, // Collect unique userIds per course
+        },
+      },
+      {
+        $project: {
+          courseId: "$_id",
+          studentCount: { $size: "$students" }, // Calculate the count of unique userIds per course
+        },
+      },
+    ]);
 
-      // If there are no enrollments or no students in any course
-      if (!studentCounts || studentCounts.length === 0) {
-          return res.status(404).json({ error: 'No enrollments found' });
-      }
+    // If there are no enrollments or no students in any course
+    if (!studentCounts || studentCounts.length === 0) {
+      return res.status(404).json({ error: "No enrollments found" });
+    }
 
-      res.status(200).json(studentCounts);
+    res.status(200).json(studentCounts);
   } catch (error) {
-      console.error('Error fetching student counts per course:', error);
-      res.status(500).json({ error: 'Internal server error' });
+    console.error("Error fetching student counts per course:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 const myLernings = async (req, res) => {
   try {
@@ -141,7 +138,7 @@ const cancelEnrollment = async (req, res) => {
     const record = await Enroll.findOne({ userId: userId, courseId: courseId });
     console.log(record._id);
 
-    const courseDetails = await Course.findOne({ _id:courseId });
+    const courseDetails = await Course.findOne({ _id: courseId });
 
     await Enroll.findOneAndDelete({ _id: record._id });
 
@@ -162,7 +159,7 @@ const addToCart = async (req, res) => {
   const { userId, courseId } = req.params;
   console.log(userId, courseId);
   try {
-    const courseDetails = await Course.findOne({ _id:courseId  });
+    const courseDetails = await Course.findOne({ _id: courseId });
 
     if (!courseDetails) {
       return res.status(404).json({ message: "Course not found" });
@@ -265,8 +262,6 @@ const getProgress = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
   enrollCourse,
   cancelEnrollment,
@@ -277,5 +272,5 @@ module.exports = {
   trackProgress,
   getProgress,
   getEnrollments,
-  getStudentsCountPerCourse
+  getStudentsCountPerCourse,
 };
