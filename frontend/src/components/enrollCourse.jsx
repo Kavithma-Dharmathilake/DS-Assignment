@@ -23,6 +23,8 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
 
       //notify by a SMS message
       await notifySMS(data[1], contact);
+
+      //assing the response object to a variable
       console.log("Enroll: " + data);
     } else {
       console.log("Failed to enroll. Status: ", response.status);
@@ -35,6 +37,7 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
 //unenroll from a course
 export const unEnroll = async (userId, email, courseId, contact) => {
   try {
+    //calling the backend method cancelEnrollment()
     const response = await fetch(
       `http://localhost:${PORT}/api/enroll/${userId}/${courseId}/cancel`,
       {
@@ -53,6 +56,8 @@ export const unEnroll = async (userId, email, courseId, contact) => {
 
       //notify by a SMS message
       await notifySMS(data[1], contact);
+
+      //assing the response object to a variable
       console.log("Unenroll: " + data);
     } else {
       console.log("Failed to unenroll. Status: ", response.status);
@@ -62,7 +67,9 @@ export const unEnroll = async (userId, email, courseId, contact) => {
   }
 };
 
+//add selected courses to the cart
 export const addToCart = async (userId, courseId) => {
+  //callinge the backend addToCart()
   try {
     const response = await fetch(
       `http://localhost:8084/api/enroll/addCart/${userId}/${courseId}`,
@@ -73,6 +80,7 @@ export const addToCart = async (userId, courseId) => {
         },
       }
     );
+    //assing the response object to a variable
     const data = await response.json();
     console.log("addToCart: " + data.courseName);
   } catch (error) {
@@ -81,6 +89,7 @@ export const addToCart = async (userId, courseId) => {
 };
 
 export const removeCartItem = async (userId, courseId) => {
+  //calling the backend removeCart()
   try {
     const response = await fetch(
       `http://localhost:8084/api/enroll/remove/${userId}/${courseId}`,
@@ -91,6 +100,8 @@ export const removeCartItem = async (userId, courseId) => {
         },
       }
     );
+
+    //assing the response object to a variable
     const data = await response.json();
     console.log("removeCartItem: " + data.courseName);
   } catch (error) {
@@ -101,6 +112,7 @@ export const removeCartItem = async (userId, courseId) => {
 export const getProgress = async (userId, courseId, count, outOf) => {
   console.log(`getProgress--- ${userId}, ${courseId}, ${count},${outOf}`);
   try {
+    //calling the backend method getProgress()
     const response = await fetch(
       `http://localhost:8084/api/enroll/myProgress/${userId}/${courseId}`,
       {
@@ -111,6 +123,8 @@ export const getProgress = async (userId, courseId, count, outOf) => {
         body: JSON.stringify({ count: count, outOf: outOf }), // Corrected 'outOf'
       }
     );
+
+    //assing the response object to a variable
     const data = await response.json();
     return data;
   } catch (error) {
