@@ -179,6 +179,7 @@ const addToCart = async (req, res) => {
   }
 };
 
+//get mycart records from database
 const myCart = async (req, res) => {
   try {
     const { userId } = req.params;
