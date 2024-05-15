@@ -169,6 +169,7 @@ const addToCart = async (req, res) => {
         price: courseDetails.price,
       });
 
+      //return the cartItem object
       return res.status(200).json(cartItem);
     }
   } catch (error) {
