@@ -1,6 +1,7 @@
 import { notifyMail, notifySMS } from "./notifyMail";
 const PORT = 8084;
 
+//enroll into the course
 export const enrollCourse = async (userId, email, courseId, contact) => {
   try {
     const response = await fetch(
@@ -61,7 +62,6 @@ export const addToCart = async (userId, courseId) => {
         headers: {
           "Content-Type": "application/json",
         },
-        
       }
     );
     const data = await response.json();
