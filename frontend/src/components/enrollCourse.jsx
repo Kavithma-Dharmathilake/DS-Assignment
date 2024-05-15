@@ -76,6 +76,7 @@ export const addToCart = async (userId, courseId) => {
         },
       }
     );
+    //assing the response object to a variable
     const data = await response.json();
     console.log("addToCart: " + data.courseName);
   } catch (error) {
