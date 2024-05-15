@@ -35,6 +35,7 @@ export const enrollCourse = async (userId, email, courseId, contact) => {
 //unenroll from a course
 export const unEnroll = async (userId, email, courseId, contact) => {
   try {
+    //calling the backend method cancelEnrollment()
     const response = await fetch(
       `http://localhost:${PORT}/api/enroll/${userId}/${courseId}/cancel`,
       {
