@@ -6,6 +6,10 @@ import "../assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css";
 import "../assets/plugins/OwlCarousel2-2.2.1/animate.css";
 import "../assets/styles/course.css";
 import "../assets/styles/course_responsive.css";
+import SweetAlert from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -19,6 +23,10 @@ const OneCourse = () => {
   const [courseContents, setCourseContents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [showCertificate, setShowCertificate] = useState(false);
+  const userId = user.user.userId;
+  const email = user.user ? user.user.email : user.email;
+  const contact = user.user.contact;
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
@@ -74,6 +82,36 @@ const OneCourse = () => {
     setProgress(progress);
     getProgress(user.user.userId, id, checkedCount, courseContents.length);
   };
+
+  const handleGetCertificateButton = async (course) =>{
+    if(progress >= 100){
+      console.log("pro :",progress)
+      toast("Your Certificate Request has been sent.");
+      setShowCertificate(true);
+      try {
+        console.log(course)
+        console.log(contact)
+        const response = await axios.post(`http://localhost:4000/api/certificate/requestcertificate`,{...course,userName:userId,email:email,contact:contact})
+        const json = await response.json()
+        console.log(response)
+    
+        
+        if (response.ok) {
+       
+        }
+        
+      } catch (error) {
+        
+      }
+
+
+      
+    }else{
+      console.log("pro :",progress)
+      toast("Please complete the course before getting certificate");
+    }
+       
+  }
 
   // Function to update local storage with the state of checkboxes
   const updateLocalStorage = (contents) => {
@@ -216,6 +254,7 @@ const OneCourse = () => {
                                   </li>
                                 ))
                               )}
+                              <button onClick={()=>handleGetCertificateButton(course)}>Get Certificate</button>
                             </ul>
                           </div>
                         </div>
@@ -297,6 +336,20 @@ const OneCourse = () => {
                 </div>
               </div>
             </div>
+
+            
+                                <ToastContainer
+                                position="top-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="light"
+                                 />
           </div>
         </div>
       </>
