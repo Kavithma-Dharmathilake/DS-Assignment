@@ -13,7 +13,8 @@ const {
     DeclineCourse,
     getTeacherCourseCount,
     getAcceptedTeacherCourses,
-    getRejectedTeacherCourses
+    getRejectedTeacherCourses,
+   
 } = require('../controllers/courseController');
 
 const router = express.Router();
