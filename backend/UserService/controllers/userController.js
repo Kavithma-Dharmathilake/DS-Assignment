@@ -1,5 +1,7 @@
+const { default: mongoose } = require("mongoose");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const userModel = require("../models/userModel");
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
@@ -162,9 +164,26 @@ const getStudents = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) =>{
+ const { id } = req.params
+
+ if(!mongoose.Types.ObjectId.isValid(id)){
+  return res.status(404).json({error: "No such user found"})
+ }
+
+ const user = await userModel.findOneAndDelete({_id: id})
+
+ if(!user){
+  return res.status(404).json({error: "No such user found"})
+ }
+ res.status(200).json(user);
+
+}
+
 
 module.exports = {
   signupUser, loginUser, getUserProfileByEmail, updateUserByEmail,
   getInstructors,
-  getStudents
+  getStudents,
+  deleteUser
 };
