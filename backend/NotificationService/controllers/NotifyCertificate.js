@@ -59,6 +59,7 @@ const updateRequestStatus = async (req, res) => {
     }
 };
 
+//declined the certificate request
 const DeclineRequest = async (req, res) => {
     const { id } = req.params;
 
