@@ -1,0 +1,119 @@
+version: '3.7'
+
+services:
+
+  course-service:
+    build:
+      context: ./backend/CourseService
+      dockerfile: Dockerfile
+    image: course-service
+    container_name: course-service-node-service
+    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./backend/CourseService/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "4002:4002"  # Assuming course-service runs on port 4002
+    depends_on:
+      - mongo
+    env_file: ./backend/CourseService/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - unicat-network
+
+  learner-service:
+    build:
+      context: ./backend/LearnerService
+      dockerfile: Dockerfile
+    image: learner-service
+    container_name: learner-service-node-server
+    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./backend/LearnerService/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "8084:8084"  # Assuming learner-service runs on port 8084
+    depends_on:
+      - mongo
+    env_file: ./backend/LearnerService/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - unicat-network
+
+  user-service:
+    build:
+      context: ./backend/userService
+      dockerfile: Dockerfile
+    image: user-service
+    container_name: user-service-node-server
+    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./backend/userService/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "4003:4003"  # Assuming user-service runs on port 4003
+    depends_on:
+      - mongo
+    env_file: ./backend/userService/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - unicat-network
+
+  payment-service:
+    build:
+      context: ./backend/PaymentService
+      dockerfile: Dockerfile
+    image: payment-service
+    container_name: payment-service-node-server
+    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./backend/PaymentService/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"  # Assuming payment-service runs on port 3000
+    depends_on:
+      - mongo
+    env_file: ./backend/PaymentService/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - unicat-network
+
+  mongo:
+    image: mongo
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - unicat-network
+
+  client:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: unicat-client
+    container_name: unicat-client
+    command: npm run dev
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - user-service
+      - course-service
+      - learner-service
+      - payment-service
+    ports:
+      - "5173:5173"  # Assuming frontend runs on port 5173
+    networks:
+      - unicat-network
+
+networks:
+    unicat-network:
+        driver: bridge
+
+volumes:
+    data-volume:
