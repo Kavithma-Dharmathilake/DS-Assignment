@@ -36,6 +36,8 @@ import AllCourses from "./pages/Admin/AllCourses.jsx";
 import ViewContent from "./pages/Admin/ViewContent.jsx";
 import AllTeachers from "./pages/Admin/AllTeachers.jsx";
 import AllStudents from "./pages/Admin/AllStudents.jsx";
+import AllPayments from "./pages/Admin/AllPayments.jsx";
+import CertificateRequests from "./pages/Admin/CertificateRequests.jsx";
 
 import Payments from "./pages/Payments.jsx";
 import Profile from "./pages/MyProfile";
@@ -105,6 +107,8 @@ function App() {
         <Route path="/viewcontent/:id" element={user ? <ViewContent /> : <Navigate to="/login" />} />
         <Route path="/allteachers" element={user ? <AllTeachers /> : <Navigate to="/login" />} />
         <Route path="/allstudents" element={user ? <AllStudents /> : <Navigate to="/login" />} />
+        <Route path="/adminpayments" element={user ? <AllPayments /> : <Navigate to="/login" />} />
+        <Route path="/adminrequests" element={user ? <CertificateRequests /> : <Navigate to="/login" />} />
 
 
         <Route path="/payments" element={user ? <Payments /> : <Navigate to="/login" />} />
